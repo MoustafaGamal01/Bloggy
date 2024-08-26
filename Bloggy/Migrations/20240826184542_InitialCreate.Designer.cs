@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bloggy.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20240826155944_AddUserProfilePicture")]
-    partial class AddUserProfilePicture
+    [Migration("20240826184542_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -120,7 +120,7 @@ namespace Bloggy.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Bloggy.Models.Comment", b =>

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bloggy.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20240826155557_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240826191944_RenameBlogToPostInCommentModel")]
+    partial class RenameBlogToPostInCommentModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,6 +72,10 @@ namespace Bloggy.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<byte[]>("ProfilePicture")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -116,7 +120,7 @@ namespace Bloggy.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Bloggy.Models.Comment", b =>
@@ -127,9 +131,6 @@ namespace Bloggy.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("BlogId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasMaxLength(2000)
@@ -139,12 +140,15 @@ namespace Bloggy.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("PostId")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BlogId");
+                    b.HasIndex("PostId");
 
                     b.HasIndex("UserId");
 
@@ -330,15 +334,15 @@ namespace Bloggy.Migrations
 
             modelBuilder.Entity("Bloggy.Models.Comment", b =>
                 {
-                    b.HasOne("Bloggy.Models.Post", "Blog")
+                    b.HasOne("Bloggy.Models.Post", "Post")
                         .WithMany("Comments")
-                        .HasForeignKey("BlogId");
+                        .HasForeignKey("PostId");
 
                     b.HasOne("Bloggy.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
-                    b.Navigation("Blog");
+                    b.Navigation("Post");
 
                     b.Navigation("User");
                 });

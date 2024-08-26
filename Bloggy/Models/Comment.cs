@@ -10,9 +10,9 @@
 
         // Nav Properties
         //[Required]
-        [ForeignKey("Blog")]
-        public int? BlogId { get; set; }
-        public Post Blog { get; set; }
+        [ForeignKey("Post")]
+        public int? PostId { get; set; }
+        public Post Post { get; set; }
 
         [ForeignKey("User")]
         public string? UserId { get; set; }

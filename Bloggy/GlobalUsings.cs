@@ -13,3 +13,4 @@ global using Bloggy.Models;
 //global using Bloggy.Controllers;
 global using Microsoft.AspNetCore.Identity;
 global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Bloggy.IRepositories;
