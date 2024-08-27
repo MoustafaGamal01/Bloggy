@@ -66,5 +66,10 @@
                 .Where(i => i.Title.Contains(search) || i.Content.Contains(search) || i.Category.Name.Contains(search))
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<Post>> GetPostsByUserId(string UserId)
+        {
+            return await _context.Posts.Include(p => p.User).Where(i => i.UserId == UserId).ToListAsync();
+        }
     }
 }

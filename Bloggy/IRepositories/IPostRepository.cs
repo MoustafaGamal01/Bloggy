@@ -10,5 +10,6 @@
         Task<IEnumerable<Post>> GetPostsByCategoryId(int categoryId);
         Task<IEnumerable<Post>> GetPostsByCategoryName(string categoryName);
         Task<IEnumerable<Post>> SearchPosts(string search);
+        Task<IEnumerable<Post>> GetPostsByUserId(string UserId);
     }
 }
