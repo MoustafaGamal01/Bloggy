@@ -39,6 +39,11 @@
                 .ToListAsync();    
         }
 
+        public async Task<IEnumerable<Comment>> GetCommentsByUserId(string userId)
+        {
+            return await _context.Comments.Include(c => c.User).Where(c => c.UserId == userId).ToListAsync();
+        }
+
         public async Task UpdateComment(int commentId, Comment comment)
         {
             var existComment = await GetCommentById(commentId);
