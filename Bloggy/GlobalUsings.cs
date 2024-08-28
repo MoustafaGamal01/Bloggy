@@ -10,7 +10,20 @@ global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Hosting;
 global using Microsoft.Extensions.Logging;
 global using Bloggy.Models;
-//global using Bloggy.Controllers;
+global using Bloggy.Controllers;
 global using Microsoft.AspNetCore.Identity;
 global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-global using Bloggy.IRepositories;
+global using Bloggy.Repositories.IRepositories;
+global using Bloggy.DTOs;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Authorization;
+global using Bloggy.Services;
+global using Bloggy.Services.IServices;
+global using Bloggy.Repositories;
+global using Bloggy.Repositories.IRepositories;
+
+
+
+
+

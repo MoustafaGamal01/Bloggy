@@ -1,10 +1,10 @@
-﻿namespace Bloggy.IRepositories
+﻿namespace Bloggy.Repositories.IRepositories
 {
     public interface ICategoryRepository
     {
-        Task UpdateCategory(int categoryId, Category category);
+        Task<bool?> UpdateCategory(int categoryId, CategoryUpdateModel category);
         Task AddCategory(Category category);
-        Task DeleteCategory(int id);
+        Task<bool?> DeleteCategory(int id);
         Task<Category> GetCategoryById(int id);
         Task<IEnumerable<Category>> GetCategories();
     }

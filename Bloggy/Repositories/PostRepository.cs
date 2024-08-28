@@ -1,4 +1,6 @@
-﻿namespace Bloggy.Repositories
+﻿using Bloggy.Repositories.IRepositories;
+
+namespace Bloggy.Repositories
 {
     public class PostRepository : IPostRepository
     {

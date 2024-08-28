@@ -1,4 +1,6 @@
 ﻿
+using Bloggy.Repositories.IRepositories;
+
 namespace Bloggy.Repositories
 {
     public class CategoryRepository : ICategoryRepository
@@ -15,15 +17,20 @@ namespace Bloggy.Repositories
             await _context.Categories.AddAsync(category);
         }
 
-        public async Task DeleteCategory(int id)
+        public async Task<bool?> DeleteCategory(int id)
         {
             var category = await GetCategoryById(id);
-            _context.Categories.Remove(category);   
+            
+            if(category == null) return false;
+
+            _context.Categories.Remove(category);
+            
+            return true;
         }
 
         public async Task<IEnumerable<Category>> GetCategories()
         {
-            return await _context.Categories.ToListAsync(); 
+            return await _context.Categories.ToListAsync();
         }
 
         public async Task<Category> GetCategoryById(int id)
@@ -31,14 +38,17 @@ namespace Bloggy.Repositories
             return await _context.Categories.FirstOrDefaultAsync(i => i.Id == id);
         }
 
-        public async Task UpdateCategory(int categoryId, Category category)
+        public async Task<bool?> UpdateCategory(int categoryId, CategoryUpdateModel category)
         {
             var cat = await GetCategoryById(categoryId);
 
-            cat.Name = category.Name;
-            cat.Description = category.Description;
+            if (cat == null) return false;
+
+            if(category.Name != null) cat.Name = category.Name;
+            if (category.Description != null) cat.Description = category.Description;
 
             _context.Categories.Update(cat);
+            return true;
         }
     }
 }

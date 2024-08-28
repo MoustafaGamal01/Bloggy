@@ -1,4 +1,4 @@
-﻿namespace Bloggy.IRepositories
+﻿namespace Bloggy.Repositories.IRepositories
 {
     public interface ICommentRepository
     {
