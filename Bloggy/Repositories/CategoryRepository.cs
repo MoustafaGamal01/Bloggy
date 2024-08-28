@@ -1,4 +1,5 @@
 ﻿
+using Bloggy.DTOs.CategoryDto;
 using Bloggy.Repositories.IRepositories;
 
 namespace Bloggy.Repositories
@@ -38,7 +39,7 @@ namespace Bloggy.Repositories
             return await _context.Categories.FirstOrDefaultAsync(i => i.Id == id);
         }
 
-        public async Task<bool?> UpdateCategory(int categoryId, CategoryUpdateModel category)
+        public async Task<bool?> UpdateCategory(int categoryId, CategoryUpdateDto category)
         {
             var cat = await GetCategoryById(categoryId);
 

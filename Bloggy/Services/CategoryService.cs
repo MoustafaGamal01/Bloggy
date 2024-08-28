@@ -1,4 +1,5 @@
 ﻿
+using Bloggy.DTOs.CategoryDto;
 using Bloggy.Models;
 using Bloggy.Services.IServices;
 
@@ -13,7 +14,7 @@ namespace Bloggy.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<bool?> AddCategory(CategoryModel categoryModel)
+        public async Task<bool?> AddCategory(CategoryAddDto categoryModel)
         {
             var category = new Category
             {
@@ -37,15 +38,24 @@ namespace Bloggy.Services
 
         public async Task<IEnumerable<Category>> GetCategories()
         {
-            return await _unitOfWork.CategoryRepo.GetCategories();
+            var categories = await _unitOfWork.CategoryRepo.GetCategories();
+            
+            return categories;
         }
 
-        public async Task<Category> GetCategory(int id)
+        public async Task<CategoryAddDto> GetCategoryById(int id)
         {
-            return await _unitOfWork.CategoryRepo.GetCategoryById(id);   
+            var category =  await _unitOfWork.CategoryRepo.GetCategoryById(id);   
+        
+            var categoryDto = new CategoryAddDto
+            {
+                Name = category.Name,
+                Description = category.Description
+            };
+            return categoryDto;
         }
 
-        public async Task<bool?> UpdateCategory(int id, CategoryUpdateModel categoryModel)
+        public async Task<bool?> UpdateCategory(int id, CategoryUpdateDto categoryModel)
         {
             if (categoryModel.Name == null && categoryModel.Description == null) return false;
 
