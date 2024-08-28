@@ -25,6 +25,17 @@
             return Ok(catDto);
         }
 
+        [HttpGet]
+        [Route("get/{id}")]
+        public async Task<IActionResult> GetCategoryById(int id)
+        {
+            var cat = await _categoryService.GetCategory(id);
+
+            if (cat == null) return BadRequest($"Can't find category with id {id}");
+            
+            return Ok(cat);
+        }
+
         [HttpPost]
         [Route("add")]
         //[ValidateAntiForgeryToken]

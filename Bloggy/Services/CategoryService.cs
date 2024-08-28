@@ -40,6 +40,11 @@ namespace Bloggy.Services
             return await _unitOfWork.CategoryRepo.GetCategories();
         }
 
+        public async Task<Category> GetCategory(int id)
+        {
+            return await _unitOfWork.CategoryRepo.GetCategoryById(id);   
+        }
+
         public async Task<bool?> UpdateCategory(int id, CategoryUpdateModel categoryModel)
         {
             if (categoryModel.Name == null && categoryModel.Description == null) return false;
