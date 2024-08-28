@@ -1,4 +1,6 @@
-﻿namespace Bloggy.Controllers
+﻿using Bloggy.DTOs.CategoryDto;
+
+namespace Bloggy.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,20 +18,15 @@
         public async Task<IActionResult> Get()
         {
             var categories = await _categoryService.GetCategories();
-            var catDto = categories.Select(c => new CategoryModel
-            {
-                Name = c.Name,
-                Description = c.Description
-            });
-
-            return Ok(catDto);
+            
+            return Ok(categories);
         }
 
         [HttpGet]
         [Route("get/{id}")]
         public async Task<IActionResult> GetCategoryById(int id)
         {
-            var cat = await _categoryService.GetCategory(id);
+            var cat = await _categoryService.GetCategoryById(id);
 
             if (cat == null) return BadRequest($"Can't find category with id {id}");
             
@@ -39,7 +36,7 @@
         [HttpPost]
         [Route("add")]
         //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddCategory([FromBody] CategoryModel categoryDto)
+        public async Task<IActionResult> AddCategory([FromBody] CategoryAddDto categoryDto)
         {
             if (ModelState.IsValid)
             {
@@ -52,7 +49,7 @@
 
         [HttpPut]
         [Route("update/{id}")]
-        public async Task<IActionResult> UpdateCategory(int id, [FromBody] CategoryUpdateModel categoryDto)
+        public async Task<IActionResult> UpdateCategory(int id, [FromBody] CategoryUpdateDto categoryDto)
         {
             bool? ok = await _categoryService.UpdateCategory(id, categoryDto);
             

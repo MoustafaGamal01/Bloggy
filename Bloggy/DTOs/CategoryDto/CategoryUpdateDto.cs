@@ -1,6 +1,6 @@
-﻿namespace Bloggy.DTOs
+﻿namespace Bloggy.DTOs.CategoryDto
 {
-    public class CategoryUpdateModel
+    public class CategoryUpdateDto
     {
         public string? Name { get; set; }
 

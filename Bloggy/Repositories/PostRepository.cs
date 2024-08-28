@@ -24,25 +24,26 @@ namespace Bloggy.Repositories
 
         public async Task<IEnumerable<Post>> GetPosts()
         {
-            return await _context.Posts.ToListAsync();
+            return await _context.Posts.Include(p => p.Category).ToListAsync();
         }
 
         public async Task<Post> GetPostById(int id)
         {
-            return await _context.Posts.FirstOrDefaultAsync(i => i.Id == id);
+            return await _context.Posts
+                .Include(p => p.Category)
+                .FirstOrDefaultAsync(i => i.Id == id);
         }
 
-        public async Task UpdatePost(int postId, Post post)
+        public async Task UpdatePost(int postId, PostUpdateDto postDto)
         {
-            var p = await GetPostById(postId);
+            var post = await GetPostById(postId);
 
-            p.Title = post.Title;
-            p.Content = post.Content;
-            p.Image = post.Image;
-            p.CategoryId = post.CategoryId;
-            p.TimeToRead = post.TimeToRead;
+            if(postDto.Title != null) post.Title = postDto.Title;
+            if (postDto.Content != null) post.Content = postDto.Content;
+            if (postDto.CategoryId != null) post.CategoryId = postDto.CategoryId;
+            if (postDto.TimeToRead != null) post.TimeToRead = postDto.TimeToRead;
 
-            _context.Posts.Update(p);
+            _context.Posts.Update(post);
         }
 
         public async Task<IEnumerable<Post>> GetPostsByCategoryId(int categoryId)

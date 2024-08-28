@@ -22,7 +22,7 @@ global using Bloggy.Services;
 global using Bloggy.Services.IServices;
 global using Bloggy.Repositories;
 global using Bloggy.Repositories.IRepositories;
-
+global using Bloggy.DTOs.PostDto;
 
 
 

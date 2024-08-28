@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "categoryDto",
-        "Type": "Bloggy.DTOs.CategoryModel",
+        "Type": "Bloggy.DTOs.CategoryDto.CategoryAddDto",
         "IsRequired": true
       }
     ],
@@ -20,6 +20,22 @@
     "Method": "DeleteCategory",
     "RelativePath": "api/Category/delete/{id}",
     "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.CategoryController",
+    "Method": "GetCategoryById",
+    "RelativePath": "api/Category/get/{id}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -56,7 +72,86 @@
       },
       {
         "Name": "categoryDto",
-        "Type": "Bloggy.DTOs.CategoryUpdateModel",
+        "Type": "Bloggy.DTOs.CategoryDto.CategoryUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.PostController",
+    "Method": "AddPost",
+    "RelativePath": "api/Post/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "postDto",
+        "Type": "Bloggy.DTOs.PostDto.PostAddDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.PostController",
+    "Method": "Delete",
+    "RelativePath": "api/Post/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.PostController",
+    "Method": "GetPostById",
+    "RelativePath": "api/Post/get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.PostController",
+    "Method": "GetAllPosts",
+    "RelativePath": "api/Post/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.PostController",
+    "Method": "UpdatePost",
+    "RelativePath": "api/Post/Update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateDto",
+        "Type": "Bloggy.DTOs.PostDto.PostUpdateDto",
         "IsRequired": true
       }
     ],

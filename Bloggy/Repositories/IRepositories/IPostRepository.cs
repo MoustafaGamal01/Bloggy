@@ -3,7 +3,7 @@
     public interface IPostRepository
     {
         Task AddPost(Post post);
-        Task UpdatePost(int postId, Post post);
+        Task UpdatePost(int postId, PostUpdateDto post);
         Task DeletePost(int id);
         Task<Post> GetPostById(int id);
         Task<IEnumerable<Post>> GetPosts();
