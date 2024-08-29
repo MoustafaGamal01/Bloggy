@@ -45,8 +45,8 @@ namespace Bloggy.Services
 
         public async Task<CategoryAddDto> GetCategoryById(int id)
         {
-            var category =  await _unitOfWork.CategoryRepo.GetCategoryById(id);   
-        
+            var category =  await _unitOfWork.CategoryRepo.GetCategoryById(id);
+            if (category == null) return null;
             var categoryDto = new CategoryAddDto
             {
                 Name = category.Name,

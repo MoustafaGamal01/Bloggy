@@ -66,10 +66,59 @@ namespace Bloggy.Controllers
         [Route("delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
+            // handle that only and admin or the post owner can delete the post
             bool? ok = await _postService.DeletePost(id);
             if(ok == true)
                 return Ok($"Post with id {id} has been deleted");
             return BadRequest($"Can't find post with id {id}");
+        }
+
+        [HttpGet]
+        [Route("getByCategory/{categoryId}")]
+        public async Task<IActionResult> GetPostsByCategory(int categoryId)
+        {
+            var posts = await _postService.GetPostsByCategoryId(categoryId);
+            if (posts == null)
+            {
+                return NotFound($"Can't find posts with category id {categoryId}");
+            }
+            return Ok(posts);
+        }
+
+        [HttpGet]
+        [Route("getByCategoryName/{categoryName}")]
+        public async Task<IActionResult> GetPostsByCategoryName(string categoryName)
+        {
+            var posts = await _postService.GetPostsByCategoryName(categoryName);
+            if (posts == null)
+            {
+                return NotFound($"Can't find posts with category name {categoryName}");
+            }
+            return Ok(posts);
+        }
+
+        [HttpGet]
+        [Route("search/{search}")]
+        public async Task<IActionResult> SearchPosts(string search)
+        {
+            var posts = await _postService.SearchPosts(search);
+            if (posts == null)
+            {
+                return NotFound($"Can't find posts with search {search}");
+            }
+            return Ok(posts);
+        }
+
+        [HttpGet]
+        [Route("getByUser/{userId}")]
+        public async Task<IActionResult> GetPostsByUser(string userId)
+        {
+            var posts = await _postService.GetPostsByUserId(userId);
+            if (posts == null)
+            {
+                return NotFound($"Can't find posts with user id {userId}");
+            }
+            return Ok(posts);
         }
     }
 }

@@ -49,8 +49,8 @@ namespace Bloggy.Repositories
         public async Task<IEnumerable<Post>> GetPostsByCategoryId(int categoryId)
         {
             return await _context.Posts
-                .Include(i=>i.Category)
-                .Where(i => i.CategoryId == i.CategoryId)
+                .Include(i => i.Category)
+                .Where(i => i.CategoryId == categoryId)
                 .ToListAsync();
         }
 
@@ -66,13 +66,20 @@ namespace Bloggy.Repositories
         {
             return await _context.Posts
                 .Include(i=>i.Category)
-                .Where(i => i.Title.Contains(search) || i.Content.Contains(search) || i.Category.Name.Contains(search))
+                .Include(i=>i.User)
+                .Where(i => i.Title.Contains(search) || i.Content.Contains(search) 
+                || i.Category.Name.Contains(search) || i.User.UserName.Contains(search))
                 .ToListAsync();
         }
 
         public async Task<IEnumerable<Post>> GetPostsByUserId(string UserId)
         {
-            return await _context.Posts.Include(p => p.User).Where(i => i.UserId == UserId).ToListAsync();
+            return await _context.Posts
+                .Include(p => p.Category)
+                .Include(p => p.User)
+                .Where(i => i.UserId == UserId)
+                .ToListAsync();
         }
+
     }
 }

@@ -138,6 +138,70 @@
   },
   {
     "ContainingType": "Bloggy.Controllers.PostController",
+    "Method": "GetPostsByCategory",
+    "RelativePath": "api/Post/getByCategory/{categoryId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.PostController",
+    "Method": "GetPostsByCategoryName",
+    "RelativePath": "api/Post/getByCategoryName/{categoryName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.PostController",
+    "Method": "GetPostsByUser",
+    "RelativePath": "api/Post/getByUser/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.PostController",
+    "Method": "SearchPosts",
+    "RelativePath": "api/Post/search/{search}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.PostController",
     "Method": "UpdatePost",
     "RelativePath": "api/Post/Update/{id}",
     "HttpMethod": "PUT",
