@@ -3,7 +3,7 @@
     public interface ICommentRepository
     {
         Task AddComment(Comment comment);
-        Task UpdateComment(int commentId, Comment comment);
+        Task UpdateComment(int commentId, CommentUpdateDto comment);
         Task DeleteComment(int id);
         Task<Comment> GetCommentById(int id);
         Task<IEnumerable<Comment>> GetComments();

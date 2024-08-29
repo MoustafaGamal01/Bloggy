@@ -46,13 +46,13 @@ namespace Bloggy.Repositories
             return await _context.Comments.Include(c => c.User).Where(c => c.UserId == userId).ToListAsync();
         }
 
-        public async Task UpdateComment(int commentId, Comment comment)
+        public async Task UpdateComment(int commentId, CommentUpdateDto commentDto)
         {
             var existComment = await GetCommentById(commentId);
             
-            existComment.Content = comment.Content;
+            existComment.Content = commentDto.Content;
 
-            _context.Comments.Update(comment);
+            _context.Comments.Update(existComment);
         }
     }
 }
