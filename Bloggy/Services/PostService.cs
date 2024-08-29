@@ -72,6 +72,11 @@ namespace Bloggy.Services
 
         public async Task<bool?> DeletePost(int id)
         {
+            var comments = await _unitOfWork.CommentRepo.GetCommentsByPost(id);
+            foreach (var comment in comments)
+            {
+                await _unitOfWork.CommentRepo.DeleteComment(comment.Id);
+            }
             await _unitOfWork.PostRepo.DeletePost(id);
             return await _unitOfWork.CompleteAsync() > 0;
         }
