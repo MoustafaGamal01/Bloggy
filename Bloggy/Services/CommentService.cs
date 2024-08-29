@@ -1,7 +1,4 @@
-﻿
-using Bloggy.Models;
-
-namespace Bloggy.Services
+﻿namespace Bloggy.Services
 {
     public class CommentService : ICommentService
     {
@@ -10,6 +7,20 @@ namespace Bloggy.Services
         public CommentService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
+        }
+
+        public async Task<bool?> AddComment(CommentAddDto commentDto)
+        {
+            // var user = get user 
+            var comment = new Comment
+            {
+                Content = commentDto.Content,
+                //UserId = commentDto.UserId,
+                PostId = commentDto.PostId,
+                CreatedAt = DateTime.Now,
+            };
+            await _unitOfWork.CommentRepo.AddComment(comment);
+            return await _unitOfWork.CompleteAsync() > 0;
         }
 
         public async Task<CommentShowDto> GetCommentById(int id)
