@@ -23,6 +23,13 @@
             return await _unitOfWork.CompleteAsync() > 0;
         }
 
+        public async Task<bool?> DeleteComment(int id)
+        {
+            await _unitOfWork.CommentRepo.DeleteComment(id);
+
+            return await _unitOfWork.CompleteAsync() > 0;
+        }
+
         public async Task<CommentShowDto> GetCommentById(int id)
         {
             var comment = await _unitOfWork.CommentRepo.GetCommentById(id);
@@ -66,6 +73,13 @@
             });
 
             return cmntsDto;
+        }
+
+        public async Task<bool?> UpdateComment(int commentId, CommentUpdateDto commentDto)
+        {
+            await _unitOfWork.CommentRepo.UpdateComment(commentId, commentDto);
+        
+            return await _unitOfWork.CompleteAsync() > 0;
         }
     }
 }

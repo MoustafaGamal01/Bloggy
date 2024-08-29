@@ -19,7 +19,7 @@ namespace Bloggy.Repositories
         public async Task DeleteComment(int id)
         {
             var comment = await GetCommentById(id);
-
+            if(comment == null) return;
             _context.Comments.Remove(comment);
         }
 
@@ -49,6 +49,8 @@ namespace Bloggy.Repositories
         public async Task UpdateComment(int commentId, CommentUpdateDto commentDto)
         {
             var existComment = await GetCommentById(commentId);
+            
+            if(existComment == null) return;
             
             existComment.Content = commentDto.Content;
 

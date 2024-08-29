@@ -6,7 +6,7 @@
         Task<IEnumerable<CommentShowDto>> GetCommentsByPostId(int postId);
         Task<IEnumerable<CommentShowDto>> GetCommentsByUserId(string userId);
         Task<bool?> AddComment(CommentAddDto comment);
-        //Task<Comment> UpdateComment(Comment comment);
-        //Task<Comment> DeleteComment(int id);
+        Task<bool?> UpdateComment(int commentId, CommentUpdateDto comment);
+        Task<bool?> DeleteComment(int id);
     }
 }

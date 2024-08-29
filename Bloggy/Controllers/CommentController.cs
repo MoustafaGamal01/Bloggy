@@ -46,5 +46,40 @@ namespace Bloggy.Controllers
             return Ok(comments);
         }
 
+        [HttpPost]
+        [Route("add")]
+        public async Task<ActionResult> AddComment(CommentAddDto commentDto)
+        {
+            if (ModelState.IsValid)
+            {
+                bool? ok = await _commentService.AddComment(commentDto);
+                if (ok == true)
+                    return Ok("Comment Added");
+            }
+            return BadRequest();
+        }
+
+        [HttpPut]
+        [Route("update/{id}")]
+        public async Task<ActionResult> UpdateComment(int id, CommentUpdateDto commentDto)
+        {
+            if (ModelState.IsValid)
+            {
+                bool? ok = await _commentService.UpdateComment(id, commentDto);
+                if (ok == true)
+                    return Ok("Comment Updated");
+            }
+            return BadRequest($"Can't find comment with id {id}");
+        }
+
+        [HttpDelete]
+        [Route("delete/{id}")]
+        public async Task<ActionResult> DeleteComment(int id)
+        {
+            bool? ok = await _commentService.DeleteComment(id);
+            if (ok == true)
+                return Ok("Comment Deleted");
+            return BadRequest($"Can't find comment with id {id}");
+        }
     }
 }

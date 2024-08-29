@@ -80,6 +80,38 @@
   },
   {
     "ContainingType": "Bloggy.Controllers.CommentController",
+    "Method": "AddComment",
+    "RelativePath": "api/Comment/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "commentDto",
+        "Type": "Bloggy.DTOs.CommentDto.CommentAddDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.CommentController",
+    "Method": "DeleteComment",
+    "RelativePath": "api/Comment/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.CommentController",
     "Method": "GetCommentById",
     "RelativePath": "api/Comment/get/{id}",
     "HttpMethod": "GET",
@@ -155,6 +187,27 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.CommentController",
+    "Method": "UpdateComment",
+    "RelativePath": "api/Comment/update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "commentDto",
+        "Type": "Bloggy.DTOs.CommentDto.CommentUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Bloggy.Controllers.PostController",
