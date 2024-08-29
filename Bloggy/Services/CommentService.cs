@@ -21,7 +21,7 @@ namespace Bloggy.Services
             }
             var cmntDto = new CommentShowDto
             {
-                Username = comment.User.UserName,
+                //Username = comment.User.UserName,
                 Content = comment.Content,
                 CreatedAt = comment.CreatedAt
             };

@@ -78,7 +78,7 @@ namespace Bloggy.Controllers
         public async Task<IActionResult> GetPostsByCategory(int categoryId)
         {
             var posts = await _postService.GetPostsByCategoryId(categoryId);
-            if (posts == null)
+            if (posts.Count() == 0)
             {
                 return NotFound($"Can't find posts with category id {categoryId}");
             }
@@ -90,7 +90,7 @@ namespace Bloggy.Controllers
         public async Task<IActionResult> GetPostsByCategoryName(string categoryName)
         {
             var posts = await _postService.GetPostsByCategoryName(categoryName);
-            if (posts == null)
+            if (posts.Count() == 0)
             {
                 return NotFound($"Can't find posts with category name {categoryName}");
             }
@@ -102,7 +102,7 @@ namespace Bloggy.Controllers
         public async Task<IActionResult> SearchPosts(string search)
         {
             var posts = await _postService.SearchPosts(search);
-            if (posts == null)
+            if (posts.Count() == 0)
             {
                 return NotFound($"Can't find posts with search {search}");
             }
@@ -114,7 +114,7 @@ namespace Bloggy.Controllers
         public async Task<IActionResult> GetPostsByUser(string userId)
         {
             var posts = await _postService.GetPostsByUserId(userId);
-            if (posts == null)
+            if (posts.Count() == 0)
             {
                 return NotFound($"Can't find posts with user id {userId}");
             }
