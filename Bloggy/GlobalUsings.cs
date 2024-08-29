@@ -23,6 +23,8 @@ global using Bloggy.Services.IServices;
 global using Bloggy.Repositories;
 global using Bloggy.Repositories.IRepositories;
 global using Bloggy.DTOs.PostDto;
+global using Bloggy.DTOs.CategoryDto;
+global using Bloggy.DTOs.CommentDto;
 
 
 
