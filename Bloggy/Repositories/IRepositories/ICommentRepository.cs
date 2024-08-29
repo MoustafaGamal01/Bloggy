@@ -7,7 +7,7 @@
         Task DeleteComment(int id);
         Task<Comment> GetCommentById(int id);
         Task<IEnumerable<Comment>> GetComments();
-        Task<IEnumerable<Comment>> GetCommentsByPost(int postId);
+        Task<IEnumerable<Comment>> GetCommentsByPostId(int postId);
         Task<IEnumerable<Comment>> GetCommentsByUserId(string userId);
     }
 }

@@ -33,7 +33,7 @@ namespace Bloggy.Repositories
             return await _context.Comments.ToListAsync();    
         }
 
-        public async Task<IEnumerable<Comment>> GetCommentsByPost(int postId)
+        public async Task<IEnumerable<Comment>> GetCommentsByPostId(int postId)
         {
             return await _context.Comments
                 .Include(i => i.Post)
