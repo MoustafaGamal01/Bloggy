@@ -45,8 +45,8 @@ namespace Bloggy.Controllers
                 {
                     return BadRequest("File size exceeds the maximum limit of 2MB.");
                 }
-
-                bool? ok = await _postService.AddPost(postDto);
+                var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+                bool? ok = await _postService.AddPost(postDto, userId);
                 if (ok == true)
                     return Ok("Post Added");
             }

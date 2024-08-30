@@ -13,23 +13,46 @@ namespace Bloggy.Services
             _unitOfWork = unitOfWork;
         }
 
+        private IEnumerable<PostShowDto> FromPostToListDto(IEnumerable<Post> posts)
+        {
+            PostShowDto postShow = new PostShowDto();
+            List<PostShowDto> postShowDtos = new List<PostShowDto>();
+            CommentShowDto cmntDto = new CommentShowDto();
+            List<CommentShowDto> cmntsDto = new List<CommentShowDto>();
+
+            foreach (var post in posts)
+            {
+                postShow.Id = post.Id;
+                postShow.Title = post.Title;
+                postShow.Content = post.Content;
+                postShow.Category = post.Category.Name;
+                postShow.CreatedAt = post.CreatedAt;
+                postShow.UserName = post.User.DisplayName;
+                postShow.Img = post.Image;
+                postShow.TimeToRead = post.TimeToRead;
+                foreach (var comment in post.Comments)
+                {
+                    cmntDto = new CommentShowDto
+                    {
+                        Content = comment.Content,
+                        CreatedAt = comment.CreatedAt,
+                        Username = comment.User.DisplayName,
+                        Img = comment.User.ProfilePicture
+                    };
+                    cmntsDto.Add(cmntDto);
+                }
+                postShow.Comments = cmntsDto;
+                postShowDtos.Add(postShow);
+            }
+
+            return postShowDtos;
+        }
+
         public async Task<IEnumerable<PostShowDto>> GetPosts()
         {
             var posts =  await _unitOfWork.PostRepo.GetPosts();
 
-            var postsDto = posts.Select(p => new PostShowDto
-            {
-                Title = p.Title,
-                Content = p.Content,
-                Category = p.Category.Name,
-                CreatedAt = p.CreatedAt,
-                Img = p.Image,
-                //UserName = p.User.UserName,
-                TimeToRead = p.TimeToRead,
-                Comments = p.Comments,
-            });
-
-            return postsDto;
+            return FromPostToListDto(posts);    
         }
 
         public async Task<PostShowDto> GetPostById(int id)
@@ -39,21 +62,34 @@ namespace Bloggy.Services
             {
                 return null;
             }
-            var postDto = new PostShowDto
+
+            PostShowDto postShow = new PostShowDto();
+            List<CommentShowDto> cmntsDto = new List<CommentShowDto>();
+
+            postShow.Id = post.Id;
+            postShow.Title = post.Title;
+            postShow.Content = post.Content;
+            postShow.Category = post.Category.Name;
+            postShow.CreatedAt = post.CreatedAt;
+            postShow.UserName = post.User.DisplayName;
+            postShow.Img = post.Image;
+            postShow.TimeToRead = post.TimeToRead;
+            foreach(var comment in post.Comments)
             {
-                Title = post.Title,
-                Content = post.Content,
-                Category = post.Category.Name,
-                CreatedAt = post.CreatedAt,
-                Img = post.Image,
-                //UserName = post.User.UserName,
-                TimeToRead = post.TimeToRead,
-                Comments = post.Comments,
-            };
-            return postDto;
+                var cmntDto = new CommentShowDto
+                {
+                    Content = comment.Content,
+                    CreatedAt = comment.CreatedAt,
+                    Username = comment.User.DisplayName,
+                    Img = comment.User.ProfilePicture
+                };
+                cmntsDto.Add(cmntDto);
+            }
+            postShow.Comments = cmntsDto;
+            return postShow;
         }
 
-        public async Task<bool?> AddPost(PostAddDto postDto)
+        public async Task<bool?> AddPost(PostAddDto postDto, string userId)
         {
             byte[]? imageData = null;
             if (postDto.Img != null)
@@ -72,7 +108,8 @@ namespace Bloggy.Services
                 Image = imageData,
                 TimeToRead = postDto.TimeToRead,
                 CreatedAt = DateTime.Now,
-                CategoryId = postDto.CategoryId
+                CategoryId = postDto.CategoryId,
+                UserId = userId
             };
 
             await _unitOfWork.PostRepo.AddPost(post);
@@ -99,76 +136,29 @@ namespace Bloggy.Services
         public async Task<IEnumerable<PostShowDto>> GetPostsByCategoryId(int categoryId)
         {
             var posts = await _unitOfWork.PostRepo.GetPostsByCategoryId(categoryId);
-        
-            var postsDto = posts.Select(p => new PostShowDto {
-                Title = p.Title,
-                Content = p.Content,
-                Category = p.Category.Name,
-                CreatedAt = p.CreatedAt,
-                Img = p.Image,
-                //UserName = p.User.UserName,
-                TimeToRead = p.TimeToRead,
-                Comments = p.Comments,
-            });
 
-            return postsDto;
+            return FromPostToListDto(posts);
         }
 
         public async Task<IEnumerable<PostShowDto>> GetPostsByCategoryName(string categoryName)
         {
             var posts = await _unitOfWork.PostRepo.GetPostsByCategoryName(categoryName);
 
-            var postsDto = posts.Select(p => new PostShowDto
-            {
-                Title = p.Title,
-                Content = p.Content,
-                Category = p.Category.Name,
-                CreatedAt = p.CreatedAt,
-                Img = p.Image,
-                //UserName = p.User.UserName,
-                TimeToRead = p.TimeToRead,
-                Comments = p.Comments,
-            });
-
-            return postsDto;
+            return FromPostToListDto(posts);
         }
 
         public async Task<IEnumerable<PostShowDto>> SearchPosts(string search)
         {
             var posts = await _unitOfWork.PostRepo.SearchPosts(search);
 
-            var postsDto = posts.Select(p => new PostShowDto
-            {
-                Title = p.Title,
-                Content = p.Content,
-                Category = p.Category.Name,
-                CreatedAt = p.CreatedAt,
-                Img = p.Image,
-                //UserName = p.User.UserName,
-                TimeToRead = p.TimeToRead,
-                Comments = p.Comments,
-            });
-
-            return postsDto;
+            return FromPostToListDto(posts);
         }
 
         public async Task<IEnumerable<PostShowDto>> GetPostsByUserId(string userId)
         {
             var posts = await _unitOfWork.PostRepo.GetPostsByUserId(userId);
 
-            var postsDto = posts.Select(p => new PostShowDto
-            {
-                Title = p.Title,
-                Content = p.Content,
-                Category = p.Category.Name,
-                CreatedAt = p.CreatedAt,
-                Img = p.Image,
-                //UserName = p.User.UserName,
-                TimeToRead = p.TimeToRead,
-                Comments = p.Comments,
-            });
-
-            return postsDto;
+            return FromPostToListDto(posts);
         }
     }
 }

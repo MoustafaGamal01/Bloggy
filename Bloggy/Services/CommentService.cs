@@ -17,7 +17,8 @@
             {
                 Content = c.Content,
                 CreatedAt = c.CreatedAt,
-                Username = c.User.UserName
+                Username = c.User.DisplayName,
+                Img = c.User.ProfilePicture
             });
         }
         public async Task<bool?> AddComment(CommentAddDto commentDto, string userId)
@@ -49,9 +50,10 @@
             }
             var cmntDto = new CommentShowDto
             {
-                Username = comment.User.UserName,
+                Username = comment.User.DisplayName,
                 Content = comment.Content,
-                CreatedAt = comment.CreatedAt
+                CreatedAt = comment.CreatedAt,
+                Img = comment.User.ProfilePicture
             };
 
             return cmntDto;

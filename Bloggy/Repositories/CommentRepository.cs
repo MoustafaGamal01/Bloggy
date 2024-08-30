@@ -25,25 +25,35 @@ namespace Bloggy.Repositories
 
         public async Task<Comment> GetCommentById(int id)
         {
-            return await _context.Comments.FirstOrDefaultAsync(i => i.Id == id);
+            return await _context
+                .Comments
+                .Include(c=>c.User)
+                .FirstOrDefaultAsync(i => i.Id == id);
         }
 
         public async Task<IEnumerable<Comment>> GetComments()
         {
-            return await _context.Comments.ToListAsync();    
+            return await _context
+                .Comments
+                .Include(c => c.User)
+                .ToListAsync();    
         }
 
         public async Task<IEnumerable<Comment>> GetCommentsByPostId(int postId)
         {
             return await _context.Comments
-                .Include(i => i.Post)
+                .Include(c => c.User)
                 .Where(i => i.PostId == postId)
                 .ToListAsync();    
         }
 
         public async Task<IEnumerable<Comment>> GetCommentsByUserId(string userId)
         {
-            return await _context.Comments.Include(c => c.User).Where(c => c.UserId == userId).ToListAsync();
+            return await _context
+                .Comments
+                .Include(c => c.User)
+                .Where(c => c.UserId == userId)
+                .ToListAsync();
         }
 
         public async Task UpdateComment(int commentId, CommentUpdateDto commentDto)

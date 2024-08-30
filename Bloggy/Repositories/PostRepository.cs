@@ -24,13 +24,21 @@ namespace Bloggy.Repositories
 
         public async Task<IEnumerable<Post>> GetPosts()
         {
-            return await _context.Posts.Include(p => p.Category).ToListAsync();
+            return await _context.
+                Posts
+                .Include(p => p.Comments)
+                .Include(p => p.Category)
+                .Include(p=>p.User)
+                .ToListAsync();
         }
 
         public async Task<Post> GetPostById(int id)
         {
             return await _context.Posts
+                .Include(p => p.Comments)
+
                 .Include(p => p.Category)
+                .Include(p => p.User)
                 .FirstOrDefaultAsync(i => i.Id == id);
         }
 
@@ -49,15 +57,19 @@ namespace Bloggy.Repositories
         public async Task<IEnumerable<Post>> GetPostsByCategoryId(int categoryId)
         {
             return await _context.Posts
+                .Include(p => p.Comments)
                 .Include(i => i.Category)
+                .Include(p => p.User)
                 .Where(i => i.CategoryId == categoryId)
                 .ToListAsync();
         }
 
         public async Task<IEnumerable<Post>> GetPostsByCategoryName(string categoryName)
         {
-            return await _context
-                .Posts.Include(i=>i.Category)
+            return await _context.Posts
+                .Include(p=>p.Category)
+                .Include(p => p.User)
+                .Include(p => p.Comments)
                 .Where(i => i.Category.Name.Contains(categoryName))
                 .ToListAsync();
         }
@@ -65,6 +77,7 @@ namespace Bloggy.Repositories
         public async Task<IEnumerable<Post>> SearchPosts(string search)
         {
             return await _context.Posts
+                .Include(p => p.Comments)
                 .Include(i=>i.Category)
                 .Include(i=>i.User)
                 .Where(i => i.Title.Contains(search) || i.Content.Contains(search) 
@@ -75,6 +88,7 @@ namespace Bloggy.Repositories
         public async Task<IEnumerable<Post>> GetPostsByUserId(string UserId)
         {
             return await _context.Posts
+                .Include(p => p.Comments)
                 .Include(p => p.Category)
                 .Include(p => p.User)
                 .Where(i => i.UserId == UserId)
