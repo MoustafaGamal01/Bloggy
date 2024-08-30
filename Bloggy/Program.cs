@@ -121,7 +121,7 @@ public class Program
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "WeladSanad API v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Bloggy API v1");
                 c.OAuthClientId("swagger-client-id");
                 c.OAuthClientSecret("");
                 c.OAuthAppName("Swagger UI");
