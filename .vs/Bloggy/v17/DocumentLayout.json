@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\AIA\\Desktop\\Bloggy\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\dtos\\postdto\\postadddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\dtos\\postdto\\postadddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\repositories\\commentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\repositories\\commentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\controllers\\postcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\controllers\\postcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\services\\commentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\services\\commentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\services\\iservices\\icommentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\services\\iservices\\icommentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\services\\postservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\services\\postservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,19 +22,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CommentRepository.cs",
-              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Repositories\\CommentRepository.cs",
-              "RelativeDocumentMoniker": "Bloggy\\Repositories\\CommentRepository.cs",
-              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Repositories\\CommentRepository.cs",
-              "RelativeToolTip": "Bloggy\\Repositories\\CommentRepository.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAArwDQAAAAMAAAA",
+              "DocumentIndex": 2,
+              "Title": "PostService.cs",
+              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Services\\PostService.cs",
+              "RelativeDocumentMoniker": "Bloggy\\Services\\PostService.cs",
+              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Services\\PostService.cs",
+              "RelativeToolTip": "Bloggy\\Services\\PostService.cs",
+              "ViewState": "AQIAADsAAAAAAAAAAAAiwEMAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-29T17:04:54.895Z",
+              "WhenOpened": "2024-08-30T14:21:52.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PostAddDto.cs",
+              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\DTOs\\PostDto\\PostAddDto.cs",
+              "RelativeDocumentMoniker": "Bloggy\\DTOs\\PostDto\\PostAddDto.cs",
+              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\DTOs\\PostDto\\PostAddDto.cs",
+              "RelativeToolTip": "Bloggy\\DTOs\\PostDto\\PostAddDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T14:15:58.394Z",
               "EditorCaption": ""
             },
             {
@@ -47,41 +56,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CommentService.cs",
-              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Services\\CommentService.cs",
-              "RelativeDocumentMoniker": "Bloggy\\Services\\CommentService.cs",
-              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Services\\CommentService.cs",
-              "RelativeToolTip": "Bloggy\\Services\\CommentService.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAArwE8AAAAtAAAA",
+              "DocumentIndex": 1,
+              "Title": "PostController.cs",
+              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\PostController.cs",
+              "RelativeDocumentMoniker": "Bloggy\\Controllers\\PostController.cs",
+              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\PostController.cs",
+              "RelativeToolTip": "Bloggy\\Controllers\\PostController.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAAAC0AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-29T16:03:32.034Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ICommentService.cs",
-              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Services\\IServices\\ICommentService.cs",
-              "RelativeDocumentMoniker": "Bloggy\\Services\\IServices\\ICommentService.cs",
-              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Services\\IServices\\ICommentService.cs",
-              "RelativeToolTip": "Bloggy\\Services\\IServices\\ICommentService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-29T16:03:16.644Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CommentController.cs",
-              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\CommentController.cs",
-              "RelativeDocumentMoniker": "Bloggy\\Controllers\\CommentController.cs",
-              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\CommentController.cs*",
-              "RelativeToolTip": "Bloggy\\Controllers\\CommentController.cs*",
-              "ViewState": "AQIAACgAAAAAAAAAAAAuwEcAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-29T16:01:38.062Z",
+              "WhenOpened": "2024-08-30T14:13:01.244Z",
               "EditorCaption": ""
             }
           ]

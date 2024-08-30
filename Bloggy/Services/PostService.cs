@@ -1,4 +1,5 @@
 ﻿
+using Bloggy.DTOs.PostDto;
 using Bloggy.Models;
 
 namespace Bloggy.Services
@@ -54,11 +55,21 @@ namespace Bloggy.Services
 
         public async Task<bool?> AddPost(PostAddDto postDto)
         {
+            byte[]? imageData = null;
+            if (postDto.Img != null)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    await postDto.Img.CopyToAsync(memoryStream);
+                    imageData = memoryStream.ToArray();  
+                }
+            }
+
             var post = new Post
             {
                 Title = postDto.Title,
                 Content = postDto.Content,
-                Image = postDto.Img,
+                Image = imageData,
                 TimeToRead = postDto.TimeToRead,
                 CreatedAt = DateTime.Now,
                 CategoryId = postDto.CategoryId

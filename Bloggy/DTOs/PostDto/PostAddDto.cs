@@ -8,7 +8,7 @@
         [Required]
         public string Content { get; set; }
 
-        public byte[]? Img { get; set; }
+        public IFormFile? Img { get; set; }
 
         public int TimeToRead { get; set; }
 

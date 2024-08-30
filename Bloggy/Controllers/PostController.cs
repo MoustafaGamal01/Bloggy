@@ -37,10 +37,15 @@ namespace Bloggy.Controllers
 
         [HttpPost]
         [Route("add")]
-        public async Task<IActionResult> AddPost(PostAddDto postDto)
+        public async Task<IActionResult> AddPost([FromForm] PostAddDto postDto)
         {
             if (ModelState.IsValid)
             {
+                if (postDto.Img != null && postDto.Img.Length > 2 * 1024 * 1024)
+                {
+                    return BadRequest("File size exceeds the maximum limit of 2MB.");
+                }
+
                 bool? ok = await _postService.AddPost(postDto);
                 if (ok == true)
                     return Ok("Post Added");
