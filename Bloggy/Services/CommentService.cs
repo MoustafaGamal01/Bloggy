@@ -3,19 +3,29 @@
     public class CommentService : ICommentService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public CommentService(IUnitOfWork unitOfWork)
+        public CommentService(IUnitOfWork unitOfWork, UserManager<ApplicationUser> _userManager)
         {
             _unitOfWork = unitOfWork;
+            _userManager = _userManager;
         }
 
-        public async Task<bool?> AddComment(CommentAddDto commentDto)
+        private IEnumerable<CommentShowDto> FromCommenttoListDto(IEnumerable<Comment> comments)
         {
-            // var user = get user 
+            return comments.Select(c => new CommentShowDto
+            {
+                Content = c.Content,
+                CreatedAt = c.CreatedAt,
+                Username = c.User.UserName
+            });
+        }
+        public async Task<bool?> AddComment(CommentAddDto commentDto, string userId)
+        {
             var comment = new Comment
             {
                 Content = commentDto.Content,
-                //UserId = commentDto.UserId,
+                UserId = userId,
                 PostId = commentDto.PostId,
                 CreatedAt = DateTime.Now,
             };
@@ -39,7 +49,7 @@
             }
             var cmntDto = new CommentShowDto
             {
-                //Username = comment.User.UserName,
+                Username = comment.User.UserName,
                 Content = comment.Content,
                 CreatedAt = comment.CreatedAt
             };
@@ -51,28 +61,14 @@
         {
             var comments = await _unitOfWork.CommentRepo.GetCommentsByPostId(postId);
 
-            var cmntsDto = comments.Select(c => new CommentShowDto 
-            {
-                Content = c.Content,
-                CreatedAt = c.CreatedAt,
-                // Username = c.User.UserName
-            });
-
-            return cmntsDto;
+            return FromCommenttoListDto(comments);
         }
 
         public async Task<IEnumerable<CommentShowDto>> GetCommentsByUserId(string userId)
         {
             var comments = await _unitOfWork.CommentRepo.GetCommentsByUserId(userId);
 
-            var cmntsDto = comments.Select(c => new CommentShowDto
-            {
-                Content = c.Content,
-                CreatedAt = c.CreatedAt,
-                // Username = c.User.UserName
-            });
-
-            return cmntsDto;
+            return FromCommenttoListDto(comments);
         }
 
         public async Task<bool?> UpdateComment(int commentId, CommentUpdateDto commentDto)

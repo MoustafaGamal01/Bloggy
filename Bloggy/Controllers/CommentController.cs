@@ -52,7 +52,8 @@ namespace Bloggy.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool? ok = await _commentService.AddComment(commentDto);
+                var userId = User.Claims.FirstOrDefault(c=>c.Type == ClaimTypes.NameIdentifier)?.Value;
+                bool? ok = await _commentService.AddComment(commentDto, userId);
                 if (ok == true)
                     return Ok("Comment Added");
             }
