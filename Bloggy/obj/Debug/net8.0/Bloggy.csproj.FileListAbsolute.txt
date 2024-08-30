@@ -142,3 +142,4 @@ C:\Users\AIA\Desktop\Bloggy\Bloggy\bin\Debug\net8.0\Microsoft.Extensions.Identit
 C:\Users\AIA\Desktop\Bloggy\Bloggy\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\AIA\Desktop\Bloggy\Bloggy\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 C:\Users\AIA\Desktop\Bloggy\Bloggy\obj\Debug\net8.0\Bloggy.sourcelink.json
+C:\Users\AIA\Desktop\Bloggy\Bloggy\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

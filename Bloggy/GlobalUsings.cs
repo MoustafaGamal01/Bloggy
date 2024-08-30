@@ -25,7 +25,14 @@ global using Bloggy.Repositories.IRepositories;
 global using Bloggy.DTOs.PostDto;
 global using Bloggy.DTOs.CategoryDto;
 global using Bloggy.DTOs.CommentDto;
-
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.IdentityModel.Tokens;
+global using System.Text;
+global using Bloggy.DTOs.AuthDto;
+global using Microsoft.AspNetCore.Http;
+global using System.IdentityModel.Tokens.Jwt;
+global using System.Security.Claims;
 
 
 
