@@ -181,5 +181,62 @@ namespace Bloggy.Controllers
             return BadRequest("Failed to change password");
         }
 
+        [HttpPut]
+        [Route("ban/{email}")]
+        public async Task<IActionResult> BanUser(string email)
+        {
+            var user = await _userService.GetUserByEmail(email);
+
+            if (user == null)
+            {
+                return BadRequest($"Can't find user with email {email}");
+            }
+            if(user.isBanned)
+            {
+                return BadRequest("User is already banned");
+            }
+            var roles = await _userService.GetUserRoles(user);
+            if (roles.Contains("Admin"))
+            {
+                return BadRequest("Can't ban admin user");
+            }
+
+            user.isBanned = true;
+
+            var result = await _userService.UpdateUser(user);
+
+            if (result.Succeeded)
+            {
+                return Ok("User banned successfully");
+            }
+
+            return BadRequest("Failed to ban user");
+        }
+
+        [HttpPut]
+        [Route("unban/{email}")]
+        public async Task<IActionResult> UnbanUser(string email)
+        {
+            var user = await _userService.GetUserByEmail(email);
+
+            if (user == null)
+            {
+                return BadRequest($"Can't find user with email {email}");
+            }
+            if(user.isBanned == false)
+            {
+                return BadRequest("User is not banned");
+            }
+            user.isBanned = false;
+
+            var result = await _userService.UpdateUser(user);
+
+            if (result.Succeeded)
+            {
+                return Ok("User unbanned successfully");
+            }
+
+            return BadRequest("Failed to unban user");
+        }
     }
 }
