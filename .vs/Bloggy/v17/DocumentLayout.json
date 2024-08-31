@@ -1,7 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\AIA\\Desktop\\Bloggy\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\services\\iservices\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\services\\iservices\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\dtos\\userdto\\usershowdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\dtos\\userdto\\usershowdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\dtos\\userdto\\userupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\dtos\\userdto\\userupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +30,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserUpdateDto.cs",
+              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\DTOs\\UserDto\\UserUpdateDto.cs",
+              "RelativeDocumentMoniker": "Bloggy\\DTOs\\UserDto\\UserUpdateDto.cs",
+              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\DTOs\\UserDto\\UserUpdateDto.cs",
+              "RelativeToolTip": "Bloggy\\DTOs\\UserDto\\UserUpdateDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T10:45:56.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserShowDto.cs",
+              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\DTOs\\UserDto\\UserShowDto.cs",
+              "RelativeDocumentMoniker": "Bloggy\\DTOs\\UserDto\\UserShowDto.cs",
+              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\DTOs\\UserDto\\UserShowDto.cs",
+              "RelativeToolTip": "Bloggy\\DTOs\\UserDto\\UserShowDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T10:10:06.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Bloggy\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Services\\UserService.cs",
+              "RelativeToolTip": "Bloggy\\Services\\UserService.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAACsAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T10:05:10.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Services\\IServices\\IUserService.cs",
+              "RelativeDocumentMoniker": "Bloggy\\Services\\IServices\\IUserService.cs",
+              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Services\\IServices\\IUserService.cs",
+              "RelativeToolTip": "Bloggy\\Services\\IServices\\IUserService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T10:03:51.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Bloggy\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\UserController.cs*",
+              "RelativeToolTip": "Bloggy\\Controllers\\UserController.cs*",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAADQAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T10:01:31.026Z",
+              "EditorCaption": ""
             }
           ]
         }

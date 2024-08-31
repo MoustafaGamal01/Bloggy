@@ -26,8 +26,22 @@
 
         public async Task<IList<ApplicationUser>> GetAllUsers()
         {
-            // get all users in UserManager
             return await _userManager.Users.ToListAsync();
+        }
+
+        public async Task<IdentityResult> UpdateUser(ApplicationUser user)
+        {
+            return await _userManager.UpdateAsync(user);
+        }
+
+        public async Task<IdentityResult> AddUser(ApplicationUser user, string password)
+        {
+            return await _userManager.CreateAsync(user, password);
+        }
+
+        public async Task<IdentityResult> AddUserToRole(ApplicationUser user, string role)
+        {
+            return await _userManager.AddToRoleAsync(user, role);
         }
     }
 }
