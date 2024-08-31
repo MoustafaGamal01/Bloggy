@@ -43,5 +43,10 @@
         {
             return await _userManager.AddToRoleAsync(user, role);
         }
+
+        public async Task<IdentityResult> ChangeUserPassword(ApplicationUser user, UserChangePasswordDto userChangePasswordDto)
+        {
+            return await _userManager.ChangePasswordAsync(user, userChangePasswordDto.CurrentPassword, userChangePasswordDto.NewPassword);
+        }
     }
 }

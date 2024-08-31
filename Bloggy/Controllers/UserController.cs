@@ -39,7 +39,6 @@ namespace Bloggy.Controllers
                     await userAddDto.ProfilePicture.CopyToAsync(memoryStream);
                     Image = memoryStream.ToArray();
                 }
-
             }
 
             var user = new ApplicationUser
@@ -110,7 +109,7 @@ namespace Bloggy.Controllers
 
         [HttpPut]
         [Route("update/{email}")]
-        public async Task<IActionResult> UpdateUser(string email, UserUpdateDto userUpdateDto)
+        public async Task<IActionResult> UpdateUser(string email, [FromForm]UserUpdateDto userUpdateDto)
         {
             var user = await _userService.GetUserByEmail(email);
 
@@ -124,6 +123,21 @@ namespace Bloggy.Controllers
                 return BadRequest("Please provide email or name to update");
             }
 
+            if(userUpdateDto.ProfilePic != null)
+            {
+                if (userUpdateDto.ProfilePic.Length > 2 * 1024 * 1024)
+                {
+                    return BadRequest("Profile picture must be 2mb max.");
+                }
+                byte[]? Image = null;
+                using (var memoryStream = new MemoryStream())
+                {
+                    await userUpdateDto.ProfilePic.CopyToAsync(memoryStream);
+                    Image = memoryStream.ToArray();
+                }
+                user.ProfilePicture = Image;
+            }
+
             if(userUpdateDto.Email != null)
             {
                 var existingUser = await _userService.GetUserByEmail(userUpdateDto.Email);
@@ -134,7 +148,6 @@ namespace Bloggy.Controllers
             }
             if(userUpdateDto.Name != null) user.DisplayName = userUpdateDto.Name;
 
-
             var result = await _userService.UpdateUser(user);
 
             if (result.Succeeded)
@@ -144,5 +157,29 @@ namespace Bloggy.Controllers
 
             return BadRequest("Failed to update user");
         }
+
+        [HttpPut]
+        [Route("changePassword")]
+        public async Task<IActionResult> ChangePassword([FromForm] UserChangePasswordDto changePasswordDto)
+        {
+            var userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+
+            var user = await _userService.GetUserByEmail(userEmail);
+
+            if (user == null)
+            {
+                return BadRequest($"Can't find user with email {userEmail}");
+            }
+
+            var result = await _userService.ChangeUserPassword(user, changePasswordDto);
+
+            if (result.Succeeded)
+            {
+                return Ok("Password changed successfully");
+            }
+
+            return BadRequest("Failed to change password");
+        }
+
     }
 }

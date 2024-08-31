@@ -514,6 +514,32 @@
   },
   {
     "ContainingType": "Bloggy.Controllers.UserController",
+    "Method": "ChangePassword",
+    "RelativePath": "api/User/changePassword",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CurrentPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "NewPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ConfirmPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.UserController",
     "Method": "GetUserByEmail",
     "RelativePath": "api/User/get/{email}",
     "HttpMethod": "GET",
@@ -552,9 +578,19 @@
         "IsRequired": true
       },
       {
-        "Name": "userUpdateDto",
-        "Type": "Bloggy.DTOs.UserDto.UserUpdateDto",
-        "IsRequired": true
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProfilePic",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
