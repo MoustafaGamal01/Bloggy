@@ -514,6 +514,22 @@
   },
   {
     "ContainingType": "Bloggy.Controllers.UserController",
+    "Method": "BanUser",
+    "RelativePath": "api/User/ban/{email}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.UserController",
     "Method": "ChangePassword",
     "RelativePath": "api/User/changePassword",
     "HttpMethod": "PUT",
@@ -566,8 +582,8 @@
   },
   {
     "ContainingType": "Bloggy.Controllers.UserController",
-    "Method": "UpdateUser",
-    "RelativePath": "api/User/update/{email}",
+    "Method": "UnbanUser",
+    "RelativePath": "api/User/unban/{email}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -576,7 +592,18 @@
         "Name": "email",
         "Type": "System.String",
         "IsRequired": true
-      },
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.UserController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/User/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
         "Name": "Email",
         "Type": "System.String",

@@ -108,17 +108,18 @@ namespace Bloggy.Controllers
         }
 
         [HttpPut]
-        [Route("update/{email}")]
-        public async Task<IActionResult> UpdateUser(string email, [FromForm]UserUpdateDto userUpdateDto)
+        [Route("update")]
+        public async Task<IActionResult> UpdateUser([FromForm]UserUpdateDto userUpdateDto)
         {
-            var user = await _userService.GetUserByEmail(email);
+            var userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            var user = await _userService.GetUserByEmail(userEmail);
 
             if (user == null)
             {
-                return BadRequest($"Can't find user with email {email}");
+                return BadRequest($"Can't find user with email {userEmail}");
             }
 
-            if(userUpdateDto.Email == null && userUpdateDto.Name == null)
+            if (userUpdateDto.Email == null && userUpdateDto.Name == null && user.ProfilePicture == null)
             {
                 return BadRequest("Please provide email or name to update");
             }

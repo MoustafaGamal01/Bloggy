@@ -76,6 +76,10 @@ namespace Bloggy.Controllers
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
                 {
+                    if(user.isBanned == true)
+                    {
+                        return BadRequest("You are banned, Contact with admin");
+                    }
                     var roles = await _userManager.GetRolesAsync(user);
                     var claims = new List<Claim>
                     {
