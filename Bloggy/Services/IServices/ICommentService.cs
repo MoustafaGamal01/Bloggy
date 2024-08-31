@@ -8,5 +8,6 @@
         Task<bool?> AddComment(CommentAddDto comment, string userId);
         Task<bool?> UpdateComment(int commentId, CommentUpdateDto comment);
         Task<bool?> DeleteComment(int id);
+        Task<bool> CheckCommentOwner(int id, string userId);
     }
 }

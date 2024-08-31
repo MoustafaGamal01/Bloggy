@@ -79,5 +79,12 @@
         
             return await _unitOfWork.CompleteAsync() > 0;
         }
+
+        public async Task<bool> CheckCommentOwner(int id, string userId)
+        {
+            var comment = await _unitOfWork.CommentRepo.GetCommentById(id);
+        
+            return comment.UserId == userId;
+        }
     }
 }

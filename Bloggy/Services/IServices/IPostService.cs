@@ -11,5 +11,6 @@
         Task<IEnumerable<PostShowDto>> GetPostsByCategoryName(string categoryName);
         Task<IEnumerable<PostShowDto>> SearchPosts(string search);
         Task<IEnumerable<PostShowDto>> GetPostsByUserId(string userId);
+        Task<bool> CheckPostOwner(int postId, string userId);
     }
 }

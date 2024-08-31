@@ -64,6 +64,12 @@ namespace Bloggy.Controllers
         [Route("update/{id}")]
         public async Task<ActionResult> UpdateComment(int id, CommentUpdateDto commentDto)
         {
+            var userId = User.Claims.FirstOrDefault(c=>c.Type == ClaimTypes.NameIdentifier)?.Value;
+            bool isOwner = await _commentService.CheckCommentOwner(id, userId);
+
+            if (!isOwner && !User.IsInRole("Admin"))
+                return Unauthorized("This user isn't allowed to edit this comment");
+
             if (ModelState.IsValid)
             {
                 bool? ok = await _commentService.UpdateComment(id, commentDto);
@@ -77,6 +83,12 @@ namespace Bloggy.Controllers
         [Route("delete/{id}")]
         public async Task<ActionResult> DeleteComment(int id)
         {
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            bool isOwner = await _commentService.CheckCommentOwner(id, userId);
+            
+            if(!isOwner && !User.IsInRole("Admin"))
+                return Unauthorized("This user isn't allowed to delete this comment");
+
             bool? ok = await _commentService.DeleteComment(id);
             if (ok == true)
                 return Ok("Comment Deleted");

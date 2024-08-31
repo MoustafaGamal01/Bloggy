@@ -160,5 +160,12 @@ namespace Bloggy.Services
 
             return FromPostToListDto(posts);
         }
+
+        public async Task<bool> CheckPostOwner(int postId, string userId)
+        {
+            var post = await _unitOfWork.PostRepo.GetPostById(postId);
+
+            return post.UserId == userId;
+        }
     }
 }

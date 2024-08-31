@@ -8,10 +8,13 @@ namespace Bloggy.Controllers
     public class PostController : ControllerBase
     {
         private readonly IPostService _postService;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public PostController(IPostService postService)
+        public PostController(IPostService postService,
+            UserManager<ApplicationUser> userManager)
         {
             _postService = postService;
+            _userManager = userManager;
         }
 
         [HttpGet]
@@ -57,6 +60,13 @@ namespace Bloggy.Controllers
         [Route("Update/{id}")]
         public async Task<IActionResult> UpdatePost(int id, PostUpdateDto updateDto)
         {
+            var userId = User.Claims.FirstOrDefault(c=>c.Type == ClaimTypes.NameIdentifier).Value;
+
+            bool isOwner = await _postService.CheckPostOwner(id, userId);
+
+            if (!isOwner && !User.IsInRole("Admin"))
+                return Unauthorized("You are not allowed to update this post");
+
             if (updateDto.Content != null || updateDto.Title != null || updateDto.TimeToRead != 0 || updateDto.CategoryId != null)
             {
                 bool? ok = await _postService.UpdatePost(id, updateDto);
@@ -72,6 +82,13 @@ namespace Bloggy.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             // handle that only and admin or the post owner can delete the post
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+
+            bool isOwner = await _postService.CheckPostOwner(id, userId);
+
+            if (!isOwner && !User.IsInRole("Admin"))
+                return Unauthorized("You are not allowed to update this post");
+
             bool? ok = await _postService.DeletePost(id);
             if(ok == true)
                 return Ok($"Post with id {id} has been deleted");
