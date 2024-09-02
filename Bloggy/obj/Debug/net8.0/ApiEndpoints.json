@@ -537,19 +537,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "CurrentPassword",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "NewPassword",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ConfirmPassword",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "changePasswordDto",
+        "Type": "Bloggy.DTOs.UserDto.UserChangePasswordDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

@@ -5,6 +5,7 @@ namespace Bloggy.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize("Admin")]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -161,7 +162,7 @@ namespace Bloggy.Controllers
 
         [HttpPut]
         [Route("changePassword")]
-        public async Task<IActionResult> ChangePassword([FromForm] UserChangePasswordDto changePasswordDto)
+        public async Task<IActionResult> ChangePassword(UserChangePasswordDto changePasswordDto)
         {
             var userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
 

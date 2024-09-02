@@ -14,7 +14,7 @@ namespace Bloggy.Controllers
         }
 
         [HttpPost("create/{roleName}")]
-        //[Authorize("Admin")]
+        [Authorize("Admin")]
         public async Task<IActionResult> CreateRole(string roleName)
         {
             var role = new IdentityRole(roleName);
@@ -35,7 +35,7 @@ namespace Bloggy.Controllers
         }
 
         [HttpDelete("delete/{roleName}")]
-        //[Authorize("Admin")]
+        [Authorize("Admin")]
         public async Task<IActionResult> DeleteRole(string roleName)
         {
             var role = await _roleManager.FindByNameAsync(roleName);
