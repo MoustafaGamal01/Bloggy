@@ -240,5 +240,28 @@ namespace Bloggy.Controllers
 
             return BadRequest("Failed to unban user");
         }
+
+        [HttpGet]
+        [Route("banned")]
+        public async Task<IActionResult> GetBannedUsers()
+        {
+            var users = await _userService.GetBannedUsers();
+            var userDtos = new List<UserShowDto>();
+
+            foreach (var user in users)
+            {
+                var roles = await _userService.GetUserRoles(user);
+                var userDto = new UserShowDto
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    Name = user.DisplayName,
+                    Role = roles.FirstOrDefault()
+                };
+                userDtos.Add(userDto);
+            }
+
+            return Ok(userDtos);
+        }
     }
 }

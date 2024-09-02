@@ -9,5 +9,6 @@
         Task<IdentityResult> AddUser(ApplicationUser user, string password);
         Task<IdentityResult> AddUserToRole(ApplicationUser user, string role);
         Task<IdentityResult> ChangeUserPassword(ApplicationUser user, UserChangePasswordDto userChangePasswordDto);
+        Task<IList<ApplicationUser>> GetBannedUsers();
     }
 }

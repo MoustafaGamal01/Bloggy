@@ -3,28 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\AIA\\Desktop\\Bloggy\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\controllers\\postcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\controllers\\postcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|C:\\Users\\AIA\\Desktop\\Bloggy\\bloggy\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\services\\iservices\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\services\\iservices\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|c:\\users\\aia\\desktop\\bloggy\\bloggy\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86725F30-FDEC-4371-B64C-5D9B41EC8EAC}|Bloggy\\Bloggy.csproj|solutionrelative:bloggy\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,80 +30,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Bloggy\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Bloggy\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAATAAAA",
+              "DocumentIndex": 1,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Services\\IServices\\IUserService.cs",
+              "RelativeDocumentMoniker": "Bloggy\\Services\\IServices\\IUserService.cs",
+              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Services\\IServices\\IUserService.cs",
+              "RelativeToolTip": "Bloggy\\Services\\IServices\\IUserService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T12:02:02.415Z",
+              "WhenOpened": "2024-09-02T12:09:02.447Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "Bloggy\\Controllers\\CategoryController.cs",
-              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "Bloggy\\Controllers\\CategoryController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAPAAAA",
+              "DocumentIndex": 2,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Bloggy\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Services\\UserService.cs",
+              "RelativeToolTip": "Bloggy\\Services\\UserService.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAADUAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T12:01:48.868Z",
+              "WhenOpened": "2024-09-02T12:08:58.524Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CommentController.cs",
-              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\CommentController.cs",
-              "RelativeDocumentMoniker": "Bloggy\\Controllers\\CommentController.cs",
-              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\CommentController.cs",
-              "RelativeToolTip": "Bloggy\\Controllers\\CommentController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T12:01:05.056Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PostController.cs",
-              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\PostController.cs",
-              "RelativeDocumentMoniker": "Bloggy\\Controllers\\PostController.cs",
-              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\PostController.cs",
-              "RelativeToolTip": "Bloggy\\Controllers\\PostController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGMAAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T11:59:25.96Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RoleController.cs",
-              "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\RoleController.cs",
-              "RelativeDocumentMoniker": "Bloggy\\Controllers\\RoleController.cs",
-              "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\RoleController.cs",
-              "RelativeToolTip": "Bloggy\\Controllers\\RoleController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABAAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-01T14:50:07.786Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Bloggy\\Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Controllers\\UserController.cs",
               "RelativeToolTip": "Bloggy\\Controllers\\UserController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAhAAAA",
+              "ViewState": "AQIAAPIAAAAAAAAAAAAowAYBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-01T14:50:04.026Z",
+              "WhenOpened": "2024-09-02T12:07:57.789Z",
               "EditorCaption": ""
             }
           ]

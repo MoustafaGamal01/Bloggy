@@ -46,5 +46,10 @@
         {
             return await _userManager.ChangePasswordAsync(user, userChangePasswordDto.CurrentPassword, userChangePasswordDto.NewPassword);
         }
+
+        public async Task<IList<ApplicationUser>> GetBannedUsers()
+        {
+            return await _userManager.Users.Where(u => u.isBanned == true).ToListAsync();
+        }
     }
 }

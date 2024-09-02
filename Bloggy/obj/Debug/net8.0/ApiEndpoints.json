@@ -530,6 +530,16 @@
   },
   {
     "ContainingType": "Bloggy.Controllers.UserController",
+    "Method": "GetBannedUsers",
+    "RelativePath": "api/User/banned",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.UserController",
     "Method": "ChangePassword",
     "RelativePath": "api/User/changePassword",
     "HttpMethod": "PUT",
