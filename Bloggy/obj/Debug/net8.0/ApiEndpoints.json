@@ -325,6 +325,22 @@
   },
   {
     "ContainingType": "Bloggy.Controllers.PostController",
+    "Method": "ManageFavoritePost",
+    "RelativePath": "api/Post/favorite/{postId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "postId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.PostController",
     "Method": "GetPostById",
     "RelativePath": "api/Post/get/{id}",
     "HttpMethod": "GET",
@@ -395,6 +411,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Bloggy.Controllers.PostController",
+    "Method": "GetFavoritePosts",
+    "RelativePath": "api/Post/getFavoritePosts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

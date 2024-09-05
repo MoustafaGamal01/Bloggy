@@ -143,5 +143,30 @@ namespace Bloggy.Controllers
             }
             return Ok(posts);
         }
+
+        [HttpGet]
+        [Route("getFavoritePosts")]
+        public async Task<IActionResult> GetFavoritePosts()
+        {
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+            var posts = await _postService.GetFavoritePostsByUserId(userId);
+            if (posts.Count() == 0)
+            {
+                return NotFound($"Can't find favorite posts for this user");
+            }
+            return Ok(posts);
+        }
+
+        [HttpPost]
+        [Route("favorite/{postId}")]
+        public async Task<IActionResult> ManageFavoritePost(int postId)
+        {
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+
+            bool ok = await _postService.ManagePostFavoriteStatus(postId, userId);
+            if (ok == true)
+                return Ok("Favorite list has been updated");
+            return BadRequest("Can't add this post to your favorite list");
+        }
     }
 }

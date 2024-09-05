@@ -95,5 +95,18 @@ namespace Bloggy.Repositories
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<Post>> GetFavoritePostsByUserId(string UserId)
+        {
+            return await _context.UserFavoritePosts
+                .Include(p => p.Post)
+                .ThenInclude(p => p.Comments)
+                .Include(p => p.Post)
+                .ThenInclude(p => p.Category)
+                .Include(p => p.Post)
+                .ThenInclude(p => p.User)
+                .Where(i => i.UserId == UserId)
+                .Select(i => i.Post)
+                .ToListAsync();
+        }
     }
 }

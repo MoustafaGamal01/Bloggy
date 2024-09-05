@@ -167,5 +167,34 @@ namespace Bloggy.Services
 
             return post.UserId == userId;
         }
+
+        public async Task<IEnumerable<PostShowDto>> GetFavoritePostsByUserId(string userId)
+        {
+            var posts = await _unitOfWork.PostRepo.GetFavoritePostsByUserId(userId);
+
+            return FromPostToListDto(posts);
+        }
+
+        public async Task<bool> ManagePostFavoriteStatus(int postId, string userId)
+        {
+            var favPost = await _unitOfWork.UserFavoritePostRepo.GetFavoritePost(postId, userId);
+
+            if (favPost == null)
+            {
+                var favoritePost = new UserFavoritePost
+                {
+                    PostId = postId,
+                    UserId = userId
+                };
+
+                await _unitOfWork.UserFavoritePostRepo.AddFavoritePost(favoritePost);
+            }
+            else
+            {
+                await _unitOfWork.UserFavoritePostRepo.RemoveFavoritePost(postId, userId);
+            }
+
+            return await _unitOfWork.CompleteAsync() > 0;
+        }
     }
 }

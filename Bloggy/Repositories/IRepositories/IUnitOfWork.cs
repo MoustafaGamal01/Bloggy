@@ -5,6 +5,7 @@
         ICategoryRepository CategoryRepo { get; }
         IPostRepository PostRepo { get; }
         ICommentRepository CommentRepo { get; }
+        IUserFavoritePostRepository UserFavoritePostRepo { get; }
         //IUserRepository User { get; }
         Task<int> CompleteAsync();
     }

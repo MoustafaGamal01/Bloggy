@@ -12,5 +12,7 @@
         Task<IEnumerable<PostShowDto>> SearchPosts(string search);
         Task<IEnumerable<PostShowDto>> GetPostsByUserId(string userId);
         Task<bool> CheckPostOwner(int postId, string userId);
+        Task<IEnumerable<PostShowDto>> GetFavoritePostsByUserId(string userId);
+        Task<bool> ManagePostFavoriteStatus(int postId, string userId);
     }
 }

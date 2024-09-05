@@ -36,7 +36,7 @@ public class Program
         services.AddScoped<ICommentService, CommentService>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+        services.AddScoped<IUserFavoritePostRepository, UserFavoritePostRepository>();
 
         services.AddDbContext<MyContext>(options =>
         {
