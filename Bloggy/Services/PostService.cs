@@ -1,58 +1,37 @@
 ﻿
 using Bloggy.DTOs.PostDto;
 using Bloggy.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bloggy.Services
 {
     public class PostService : IPostService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public PostService(IUnitOfWork unitOfWork)
+        public PostService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
-        private IEnumerable<PostShowDto> FromPostToListDto(IEnumerable<Post> posts)
+        private PagedResult<PostShowDto> FromPostToListDto(int totalCount, PagedResult<Post> posts)
         {
-            PostShowDto postShow = new PostShowDto();
-            List<PostShowDto> postShowDtos = new List<PostShowDto>();
-            CommentShowDto cmntDto = new CommentShowDto();
-            List<CommentShowDto> cmntsDto = new List<CommentShowDto>();
-
-            foreach (var post in posts)
+            return _mapper.Map<PagedResult<PostShowDto>>(new PagedResult<Post>
             {
-                postShow.Id = post.Id;
-                postShow.Title = post.Title;
-                postShow.Content = post.Content;
-                postShow.Category = post.Category.Name;
-                postShow.CreatedAt = post.CreatedAt;
-                postShow.UserName = post.User.DisplayName;
-                postShow.Img = post.Image;
-                postShow.TimeToRead = post.TimeToRead;
-                foreach (var comment in post.Comments)
-                {
-                    cmntDto = new CommentShowDto
-                    {
-                        Content = comment.Content,
-                        CreatedAt = comment.CreatedAt,
-                        Username = comment.User.DisplayName,
-                        Img = comment.User.ProfilePicture
-                    };
-                    cmntsDto.Add(cmntDto);
-                }
-                postShow.Comments = cmntsDto;
-                postShowDtos.Add(postShow);
-            }
-
-            return postShowDtos;
+                Items = posts.Items,
+                PageNumber = posts.PageNumber,
+                PageSize = posts.PageSize,
+                TotalPosts = posts.TotalPosts
+            });
         }
 
-        public async Task<IEnumerable<PostShowDto>> GetPosts()
+        public async Task<PagedResult<PostShowDto>> GetPosts(int pageNumber)
         {
-            var posts =  await _unitOfWork.PostRepo.GetPosts();
+            var posts = await _unitOfWork.PostRepo.GetPosts(pageNumber);
 
-            return FromPostToListDto(posts);    
+            return FromPostToListDto(posts.TotalPosts, posts);
         }
 
         public async Task<PostShowDto> GetPostById(int id)
@@ -133,32 +112,32 @@ namespace Bloggy.Services
             return await _unitOfWork.CompleteAsync() > 0;
         }
 
-        public async Task<IEnumerable<PostShowDto>> GetPostsByCategoryId(int categoryId)
+        public async Task<PagedResult<PostShowDto>> GetPostsByCategoryId(int categoryId, int pageNumber)
         {
-            var posts = await _unitOfWork.PostRepo.GetPostsByCategoryId(categoryId);
-
-            return FromPostToListDto(posts);
+            var posts = await _unitOfWork.PostRepo.GetPostsByCategoryId(categoryId, pageNumber);
+           
+            return FromPostToListDto(posts.TotalPosts, posts);
         }
 
-        public async Task<IEnumerable<PostShowDto>> GetPostsByCategoryName(string categoryName)
+        public async Task<PagedResult<PostShowDto>> GetPostsByCategoryName(string categoryName, int pageNumber)
         {
-            var posts = await _unitOfWork.PostRepo.GetPostsByCategoryName(categoryName);
+            var posts = await _unitOfWork.PostRepo.GetPostsByCategoryName(categoryName, pageNumber);
 
-            return FromPostToListDto(posts);
+            return FromPostToListDto(posts.TotalPosts, posts);
         }
 
-        public async Task<IEnumerable<PostShowDto>> SearchPosts(string search)
+        public async Task<PagedResult<PostShowDto>> SearchPosts(string search, int pageNumber)
         {
-            var posts = await _unitOfWork.PostRepo.SearchPosts(search);
+            var posts = await _unitOfWork.PostRepo.SearchPosts(search, pageNumber);
 
-            return FromPostToListDto(posts);
+            return FromPostToListDto(posts.TotalPosts, posts);
         }
 
-        public async Task<IEnumerable<PostShowDto>> GetPostsByUserId(string userId)
+        public async Task<PagedResult<PostShowDto>> GetPostsByUserId(string userId, int pageNumber)
         {
-            var posts = await _unitOfWork.PostRepo.GetPostsByUserId(userId);
+            var posts = await _unitOfWork.PostRepo.GetPostsByUserId(userId, pageNumber);
 
-            return FromPostToListDto(posts);
+            return FromPostToListDto(posts.TotalPosts, posts);
         }
 
         public async Task<bool> CheckPostOwner(int postId, string userId)
@@ -168,11 +147,11 @@ namespace Bloggy.Services
             return post.UserId == userId;
         }
 
-        public async Task<IEnumerable<PostShowDto>> GetFavoritePostsByUserId(string userId)
+        public async Task<PagedResult<PostShowDto>> GetFavoritePostsByUserId(string userId, int pageNumber)
         {
-            var posts = await _unitOfWork.PostRepo.GetFavoritePostsByUserId(userId);
+            var posts = await _unitOfWork.PostRepo.GetFavoritePostsByUserId(userId, pageNumber);
 
-            return FromPostToListDto(posts);
+            return FromPostToListDto(posts.TotalPosts, posts);
         }
 
         public async Task<bool> ManagePostFavoriteStatus(int postId, string userId)

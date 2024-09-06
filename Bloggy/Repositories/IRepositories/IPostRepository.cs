@@ -6,11 +6,12 @@
         Task UpdatePost(int postId, PostUpdateDto post);
         Task DeletePost(int id);
         Task<Post> GetPostById(int id);
-        Task<IEnumerable<Post>> GetPosts();
-        Task<IEnumerable<Post>> GetPostsByCategoryId(int categoryId);
-        Task<IEnumerable<Post>> GetPostsByCategoryName(string categoryName);
-        Task<IEnumerable<Post>> SearchPosts(string search);
-        Task<IEnumerable<Post>> GetPostsByUserId(string UserId);
-        Task<IEnumerable<Post>> GetFavoritePostsByUserId(string UserId);
+        Task<PagedResult<Post>> GetPosts(int pageNumber);
+        Task<PagedResult<Post>> GetPostsByCategoryId(int categoryId, int pageNumber);
+        Task<PagedResult<Post>> GetPostsByCategoryName(string categoryName, int pageNumber);
+        Task<PagedResult<Post>> SearchPosts(string search, int pageNumber);
+        Task<PagedResult<Post>> GetPostsByUserId(string UserId, int pageNumber);
+        Task<PagedResult<Post>> GetFavoritePostsByUserId(string UserId, int pageNumber);
+        Task<int> PostsCount();
     }
 }

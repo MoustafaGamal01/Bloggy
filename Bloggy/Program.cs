@@ -28,6 +28,8 @@ public class Program
 
         services.AddEndpointsApiExplorer();
 
+        // inject AutoMapper
+        services.AddAutoMapper(typeof(MappingProfile));
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<IPostRepository, PostRepository>();

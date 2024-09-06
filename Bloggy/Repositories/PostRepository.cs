@@ -1,4 +1,6 @@
-﻿using Bloggy.Repositories.IRepositories;
+﻿using Bloggy.Models;
+using Bloggy.Repositories.IRepositories;
+using Microsoft.Extensions.Hosting;
 
 namespace Bloggy.Repositories
 {
@@ -21,15 +23,26 @@ namespace Bloggy.Repositories
             var post = await GetPostById(id);
             _context.Posts.Remove(post);
         }
-
-        public async Task<IEnumerable<Post>> GetPosts()
+        private int pageSize = 10;
+        
+        public async Task<PagedResult<Post>> GetPosts(int pageNumber)
         {
-            return await _context.
-                Posts
+            var totalItems = await _context.Posts.CountAsync();
+            var posts = await _context.Posts
                 .Include(p => p.Comments)
                 .Include(p => p.Category)
-                .Include(p=>p.User)
+                .Include(p => p.User)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
+
+            return new PagedResult<Post>
+            {
+                Items = posts,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalPosts = totalItems
+            };
         }
 
         public async Task<Post> GetPostById(int id)
@@ -54,59 +67,124 @@ namespace Bloggy.Repositories
             _context.Posts.Update(post);
         }
 
-        public async Task<IEnumerable<Post>> GetPostsByCategoryId(int categoryId)
+        public async Task<PagedResult<Post>> GetPostsByCategoryId(int categoryId, int pageNumber)
         {
-            return await _context.Posts
-                .Include(p => p.Comments)
-                .Include(i => i.Category)
-                .Include(p => p.User)
-                .Where(i => i.CategoryId == categoryId)
-                .ToListAsync();
-        }
+            var totalItems = await _context.Posts
+                .Include(c=>c.Category)
+                .Where(c=>c.CategoryId == categoryId)
+                .CountAsync();
 
-        public async Task<IEnumerable<Post>> GetPostsByCategoryName(string categoryName)
-        {
-            return await _context.Posts
-                .Include(p=>p.Category)
-                .Include(p => p.User)
-                .Include(p => p.Comments)
-                .Where(i => i.Category.Name.Contains(categoryName))
-                .ToListAsync();
-        }
-
-        public async Task<IEnumerable<Post>> SearchPosts(string search)
-        {
-            return await _context.Posts
-                .Include(p => p.Comments)
-                .Include(i=>i.Category)
-                .Include(i=>i.User)
-                .Where(i => i.Title.Contains(search) || i.Content.Contains(search) 
-                || i.Category.Name.Contains(search) || i.User.UserName.Contains(search))
-                .ToListAsync();
-        }
-
-        public async Task<IEnumerable<Post>> GetPostsByUserId(string UserId)
-        {
-            return await _context.Posts
+            var posts = await _context.Posts
                 .Include(p => p.Comments)
                 .Include(p => p.Category)
                 .Include(p => p.User)
-                .Where(i => i.UserId == UserId)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .Where(c=> c.CategoryId == categoryId)
                 .ToListAsync();
+
+            return new PagedResult<Post>
+            {
+                Items = posts,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalPosts = totalItems
+            };
         }
 
-        public async Task<IEnumerable<Post>> GetFavoritePostsByUserId(string UserId)
+        public async Task<PagedResult<Post>> GetPostsByCategoryName(string categoryName, int pageNumber)
         {
-            return await _context.UserFavoritePosts
+            var totalItems = await _context.Posts
+                .Include(c => c.Category)
+                .Where(c => c.Category.Name.Contains(categoryName))
+                .CountAsync();
+
+            var posts = await _context.Posts
+                .Include(p => p.Comments)
+                .Include(p => p.Category)
+                .Include(p => p.User)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .Where(c => c.Category.Name.Contains(categoryName))
+                .ToListAsync();
+
+            return new PagedResult<Post>
+            {
+                Items = posts,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalPosts = totalItems
+            };
+        }
+
+        public async Task<PagedResult<Post>> SearchPosts(string search, int pageNumber)
+        {
+            var posts =  await _context.Posts
+                .Include(p => p.Comments)
+                .Include(i=>i.Category)
+                .Include(i=>i.User)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .Where(i => i.Title.Contains(search) || i.Content.Contains(search) 
+                || i.Category.Name.Contains(search) || i.User.UserName.Contains(search))
+                .ToListAsync();
+
+            return new PagedResult<Post>
+            {
+                Items = posts,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalPosts = posts.Count
+            };
+        }
+
+        public async Task<PagedResult<Post>> GetPostsByUserId(string UserId, int pageNumber)
+        {
+            var posts = await _context.Posts
+                .Include(p => p.Comments)
+                .Include(p => p.Category)
+                .Include(p => p.User)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .Where(i => i.UserId == UserId)
+                .ToListAsync();
+
+            return new PagedResult<Post>
+            {
+                Items = posts,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalPosts = posts.Count
+            };
+        }
+
+        public async Task<PagedResult<Post>> GetFavoritePostsByUserId(string UserId, int pageNumber)
+        {
+            var posts = await _context.UserFavoritePosts
                 .Include(p => p.Post)
                 .ThenInclude(p => p.Comments)
                 .Include(p => p.Post)
                 .ThenInclude(p => p.Category)
                 .Include(p => p.Post)
                 .ThenInclude(p => p.User)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
                 .Where(i => i.UserId == UserId)
                 .Select(i => i.Post)
                 .ToListAsync();
+
+            return new PagedResult<Post>
+            {
+                Items = posts,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalPosts = posts.Count
+            };
+        }
+
+        public async Task<int> PostsCount()
+        {
+            return await _context.Posts.CountAsync();
         }
     }
 }

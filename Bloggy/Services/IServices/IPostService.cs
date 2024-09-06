@@ -2,17 +2,17 @@
 {
     public interface IPostService
     {
-        Task<IEnumerable<PostShowDto>> GetPosts();
+        Task<PagedResult<PostShowDto>> GetPosts(int pageNumber);
         Task<PostShowDto> GetPostById(int id);
         Task<bool?> AddPost(PostAddDto post, string userId);
         Task<bool?> UpdatePost(int id, PostUpdateDto post);
         Task<bool?> DeletePost(int id);
-        Task<IEnumerable<PostShowDto>> GetPostsByCategoryId(int categoryId);
-        Task<IEnumerable<PostShowDto>> GetPostsByCategoryName(string categoryName);
-        Task<IEnumerable<PostShowDto>> SearchPosts(string search);
-        Task<IEnumerable<PostShowDto>> GetPostsByUserId(string userId);
+        Task<PagedResult<PostShowDto>> GetPostsByCategoryId(int categoryId, int pageNumber);
+        Task<PagedResult<PostShowDto>> GetPostsByCategoryName(string categoryName, int pageNumber);
+        Task<PagedResult<PostShowDto>> SearchPosts(string search, int pageNumber);
+        Task<PagedResult<PostShowDto>> GetPostsByUserId(string userId, int pageNumber);
+        Task<PagedResult<PostShowDto>> GetFavoritePostsByUserId(string userId, int pageNumber);
         Task<bool> CheckPostOwner(int postId, string userId);
-        Task<IEnumerable<PostShowDto>> GetFavoritePostsByUserId(string userId);
         Task<bool> ManagePostFavoriteStatus(int postId, string userId);
     }
 }

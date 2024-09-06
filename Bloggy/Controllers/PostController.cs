@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Bloggy.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bloggy.Controllers
@@ -20,10 +21,17 @@ namespace Bloggy.Controllers
 
         [HttpGet]
         [Route("getAll")]
-        public async Task<IActionResult> GetAllPosts()
+        public async Task<IActionResult> GetAllPosts(int pageNumber = 1)
         {
-            var posts = await _postService.GetPosts();
-
+            var posts = await _postService.GetPosts(pageNumber);
+            if (posts.TotalPosts == 0)
+            {
+                return NotFound($"Can't find posts");
+            }
+            if(pageNumber > posts.TotalPages)
+            {
+                return NotFound($"Can't find more posts");
+            }
             return Ok(posts);
         }
 
@@ -98,61 +106,81 @@ namespace Bloggy.Controllers
 
         [HttpGet]
         [Route("getByCategory/{categoryId}")]
-        public async Task<IActionResult> GetPostsByCategory(int categoryId)
+        public async Task<IActionResult> GetPostsByCategory(int categoryId, int pageNumber = 1)
         {
-            var posts = await _postService.GetPostsByCategoryId(categoryId);
-            if (posts.Count() == 0)
+            var posts = await _postService.GetPostsByCategoryId(categoryId, pageNumber);
+            if (posts.TotalPosts == 0)
             {
-                return NotFound($"Can't find posts with category id {categoryId}");
+                return NotFound($"Can't find posts for category {categoryId}");
             }
-            return Ok(posts);
+            if (pageNumber > posts.TotalPages)
+            {
+                return NotFound($"Can't find more posts for category {categoryId}");
+            }
+                return Ok(posts);
         }
 
         [HttpGet]
         [Route("getByCategoryName/{categoryName}")]
-        public async Task<IActionResult> GetPostsByCategoryName(string categoryName)
+        public async Task<IActionResult> GetPostsByCategoryName(string categoryName, int pageNumber = 1)
         {
-            var posts = await _postService.GetPostsByCategoryName(categoryName);
-            if (posts.Count() == 0)
+            var posts = await _postService.GetPostsByCategoryName(categoryName, pageNumber);
+            if (posts.TotalPosts == 0)
             {
-                return NotFound($"Can't find posts with category name {categoryName}");
+                return NotFound($"Can't find posts for category {categoryName}");
+            }
+            if (pageNumber > posts.TotalPages)
+            {
+                return NotFound($"Can't find more posts for category {categoryName}");
             }
             return Ok(posts);
         }
 
         [HttpGet]
         [Route("search/{search}")]
-        public async Task<IActionResult> SearchPosts(string search)
+        public async Task<IActionResult> SearchPosts(string search, int pageNumber = 1)
         {
-            var posts = await _postService.SearchPosts(search);
-            if (posts.Count() == 0)
+            var posts = await _postService.SearchPosts(search, pageNumber);
+            if (posts.TotalPosts == 0)
             {
                 return NotFound($"Can't find posts with search {search}");
+            }
+            if (pageNumber > posts.TotalPages)
+            {
+                return NotFound($"Can't find more posts with search {search}");
             }
             return Ok(posts);
         }
 
         [HttpGet]
         [Route("getByUser/{userId}")]
-        public async Task<IActionResult> GetPostsByUser(string userId)
+        public async Task<IActionResult> GetPostsByUser(string userId, int pageNumber = 1)
         {
-            var posts = await _postService.GetPostsByUserId(userId);
-            if (posts.Count() == 0)
+            var posts = await _postService.GetPostsByUserId(userId, pageNumber);
+            if (posts.TotalPosts == 0)
             {
-                return NotFound($"Can't find posts with user id {userId}");
+                return NotFound($"Can't find posts for user {userId}");
+            }
+            if (pageNumber > posts.TotalPages)
+            {
+                return NotFound($"Can't find posts for more user {userId}");
             }
             return Ok(posts);
         }
 
         [HttpGet]
         [Route("getFavoritePosts")]
-        public async Task<IActionResult> GetFavoritePosts()
+        public async Task<IActionResult> GetFavoritePosts(int pageNumber = 1)
         {
             var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
-            var posts = await _postService.GetFavoritePostsByUserId(userId);
-            if (posts.Count() == 0)
+            var posts = await _postService.GetFavoritePostsByUserId(userId, pageNumber);
+            if (posts.TotalPosts == 0)
             {
                 return NotFound($"Can't find favorite posts for this user");
+            }
+            if (pageNumber > posts.TotalPages)
+            {
+                return NotFound($"Can't find more favorite posts for this user");
             }
             return Ok(posts);
         }

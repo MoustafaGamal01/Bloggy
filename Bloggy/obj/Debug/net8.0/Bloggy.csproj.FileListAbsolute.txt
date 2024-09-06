@@ -288,3 +288,4 @@ C:\Users\AIA\Desktop\Bloggy\Bloggy\Bloggy\obj\Debug\net8.0\refint\Bloggy.dll
 C:\Users\AIA\Desktop\Bloggy\Bloggy\Bloggy\obj\Debug\net8.0\Bloggy.pdb
 C:\Users\AIA\Desktop\Bloggy\Bloggy\Bloggy\obj\Debug\net8.0\Bloggy.genruntimeconfig.cache
 C:\Users\AIA\Desktop\Bloggy\Bloggy\Bloggy\obj\Debug\net8.0\ref\Bloggy.dll
+C:\Users\AIA\Desktop\Bloggy\Bloggy\Bloggy\bin\Debug\net8.0\AutoMapper.dll
