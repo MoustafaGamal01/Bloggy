@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "0LEJk50GywRAc0sRQ3ewcA1n0GDKRty9TbVyu3ezHcyQKnHzVRSWQNTSl2As6gpTH8zoM+qpJVrJsQANVamTIw==",
+  "dgSpecHash": "i/5eOLnPsC//aLnldoZmUHILyb6m/3FhR+D/grTtxbJpwn34B7vP+4gnLhSINs9ysRTQguJVxe8cCGUK50UK5Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\AIA\\Desktop\\Bloggy\\Bloggy\\Bloggy\\Bloggy.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\AIA\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\AIA\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\AIA\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\AIA\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

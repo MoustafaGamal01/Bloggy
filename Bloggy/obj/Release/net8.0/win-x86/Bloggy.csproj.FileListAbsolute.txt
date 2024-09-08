@@ -266,3 +266,4 @@ C:\Users\AIA\Desktop\Bloggy\Bloggy\Bloggy\obj\Release\net8.0\win-x86\refint\Blog
 C:\Users\AIA\Desktop\Bloggy\Bloggy\Bloggy\obj\Release\net8.0\win-x86\Bloggy.pdb
 C:\Users\AIA\Desktop\Bloggy\Bloggy\Bloggy\obj\Release\net8.0\win-x86\Bloggy.genruntimeconfig.cache
 C:\Users\AIA\Desktop\Bloggy\Bloggy\Bloggy\obj\Release\net8.0\win-x86\ref\Bloggy.dll
+C:\Users\AIA\Desktop\Bloggy\Bloggy\Bloggy\bin\Release\net8.0\win-x86\AutoMapper.dll

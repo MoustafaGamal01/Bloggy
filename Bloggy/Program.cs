@@ -1,3 +1,8 @@
+using Bloggy.BussinessLogicLayer.Services;
+using Bloggy.BussinessLogicLayer.Services.IServices;
+using Bloggy.DataAccessLayer.Models;
+using Bloggy.DataAccessLayer.Repositories;
+using Bloggy.DataAccessLayer.Repositories.IRepositories;
 using Microsoft.OpenApi.Models;
 
 public class Program
@@ -28,7 +33,6 @@ public class Program
 
         services.AddEndpointsApiExplorer();
 
-        // inject AutoMapper
         services.AddAutoMapper(typeof(MappingProfile));
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<ICategoryService, CategoryService>();
