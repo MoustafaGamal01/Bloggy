@@ -63,6 +63,6 @@ Ensure that your `appsettings.json` is properly configured for your local enviro
     "LifeTime": 90 // Token lifetime in minutes
     }
 }
-
+```
 ## Contact
 For any inquiries or issues, please contact the repository owner @MoustafaGamal01.
